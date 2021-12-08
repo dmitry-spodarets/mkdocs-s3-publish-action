@@ -7,9 +7,6 @@ branding:
 runs:
   using: "composite"
   steps:
-    - name: Setup mkdocs
-      run: pip install --no-cache-dir -r "${{ github.action_path }}/requirements.txt"
-      shell: bash
     - name: Build mkdocs pages and publish to S3 bucket
       run: ${{ github.action_path }}/action.sh
       shell: bash
