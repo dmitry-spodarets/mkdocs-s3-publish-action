@@ -29,11 +29,3 @@ fi
 
 # build mkdocs pages
 mkdocs build --config-file "${CONFIG_FILE}"
-
-# install minio/client
-sudo curl -sfo ./mc -L https://dl.min.io/client/mc/release/linux-amd64/mc
-sudo chmod 755 ./mc
-
-# mirror pages to S3 bucket 
-./mc alias set site "${S3_LOCATION}" "${S3_ACCESS_KEY}" "${S3_SECRET_KEY}"
-./mc mirror --overwrite "${GITHUB_WORKSPACE}/${DOC_SITE:-site}" "site/${S3_BUCKET}/${S3_DIR}"
